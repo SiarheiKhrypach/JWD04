@@ -8,33 +8,33 @@ public class Calculator {
         int i = 1; //Выход из цикла while при смене i
 
         while (i == 1) {
-            TextMessages.greeting();
+            System.out.println(TextMessages.GREETING);
             Scanner scan = new Scanner(System.in);
             try {
                 int choice = scan.nextInt();
                 switch (choice) {
                     case (1):
-                        operation("\nYour choice is addition.", MathOperation.addition(valueInput()));
+                        action (MathOperation.addition(valueInput("\nYour choice is addition.")));
                         break;
 
                     case (2):
-                        operation("\nYour choice is subtraction.", MathOperation.subtraction(valueInput()));
+                        action (MathOperation.subtraction(valueInput("\nYour choice is subtraction.")));
                         break;
 
                     case (3):
-                        operation("\nYour choice is multiplication.", MathOperation.multiplication(valueInput()));
+                        action (MathOperation.multiplication(valueInput("\nYour choice is multiplication.")));
                         break;
 
                     case (4):
-                        operation("\nYour choice is division.", MathOperation.division(valueInput()));
+                            action (MathOperation.division(valueInput("\nYour choice is division.")));
                         break;
 
                     case (5):
-                        operation("\nYour choice is exponentiation.", MathOperation.power(valueInput()));
+                        action (MathOperation.power(valueInput("\nYour choice is exponentiation.")));
                         break;
 
                     case (6):
-                        operation("\nYour choice is root extraction.", MathOperation.root(valueInput()));
+                        action (MathOperation.root(valueInput("\nYour choice is root extraction.")));
                         break;
 
                     case (7):
@@ -43,21 +43,21 @@ public class Calculator {
                         break;
 
                     default:
-                        TextMessages.wrongDataMessage();
+                        System.out.println(TextMessages.WRONG_DATA_MESSAGE);
                 }
             } catch (Exception ex) {
-                TextMessages.wrongDataMessage();
+                System.out.println(TextMessages.WRONG_DATA_MESSAGE);;
             }
         }
     }
 
-    private static void operation(String message, double operation) {
-        System.out.println(message);
+    private static void action(String operation) {
         System.out.println("\nThe answer is " + operation + "\n" + "Press Enter to continue.");
         pressEnterToContinue();
     }
 
-    private static double[] valueInput() {
+    private static double[] valueInput(String choice) {
+        System.out.println(choice);
         Scanner scanAdd = new Scanner(System.in);
         System.out.println("\nEnter the value A");
         double firstInput = scanAdd.nextDouble();
